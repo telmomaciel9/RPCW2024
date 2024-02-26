@@ -17,7 +17,7 @@ _____
 
 Dataset
 
-![Dataset](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/db.json)
+[Dataset](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/db.json)
 
 Ficheiro ttl inicial com uma instância
 
