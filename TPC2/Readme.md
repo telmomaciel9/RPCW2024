@@ -15,17 +15,15 @@ _____
 
 ### Ficheiros
 
-Dataset
-
 [Dataset](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/db.json)
 
 Ficheiro ttl inicial com uma instância
 
-![ttlinicial](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/inicio.ttl)
+[inicio.ttl](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/inicio.ttl)
 
 Código python para povoar a ontologia
 
-![geraTTL.py](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/geraTTL.py)
+[geraTTL.py](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/geraTTL.py)
 
 ----- 
 
@@ -33,6 +31,8 @@ Código python para povoar a ontologia
 
 Ficheiro ttl final
 
+[final.ttl](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/final.ttl)
 
 Diagrama gerado no graphDB
 
+![](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/graph.png)
