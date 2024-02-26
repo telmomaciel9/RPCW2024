@@ -23,7 +23,7 @@ Telmo Maciel - PG54246
 
 [inicio.ttl](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/inicio.ttl)
 
-Código python para povoar a ontologia:
+#### Código python para povoar a ontologia:
 
 [geraTTL.py](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/geraTTL.py)
 
@@ -31,10 +31,10 @@ Código python para povoar a ontologia:
 
 ## Resultados
 
-Ficheiro ttl final
+#### Ficheiro ttl final
 
 [final.ttl](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/final.ttl)
 
-Diagrama gerado no graphDB
+#### Diagrama gerado no graphDB
 
 ![](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/graph.png)
