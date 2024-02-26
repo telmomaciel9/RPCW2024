@@ -7,13 +7,15 @@ O tpc2 consiste nos seguintes passos:
 2) Criar uma ontologia: classes, objectproperties, dataproperties
 3) Criar script para povoar ontologia
 4) Criar repositório no graphdb com a ontologia
-_____
+
+
 
 ##  Autor
 Telmo Maciel - PG54246
-_____
 
-### Ficheiros
+
+
+## Ficheiros
 
 [Dataset](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/db.json)
 
@@ -25,9 +27,9 @@ Código python para povoar a ontologia:
 
 [geraTTL.py](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/geraTTL.py)
 
------ 
 
-### Resultados
+
+## Resultados
 
 Ficheiro ttl final
 
