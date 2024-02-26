@@ -17,11 +17,11 @@ _____
 
 [Dataset](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/db.json)
 
-Ficheiro ttl inicial com uma instância
+Ficheiro ttl inicial com uma instância:
 
 [inicio.ttl](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/inicio.ttl)
 
-Código python para povoar a ontologia
+Código python para povoar a ontologia:
 
 [geraTTL.py](https://github.com/telmomaciel9/RPCW2024/blob/main/TPC2/geraTTL.py)
 
