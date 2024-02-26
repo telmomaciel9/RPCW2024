@@ -1,5 +1,5 @@
 
-## TPC2
+# TPC2
 
 O tpc2 consiste nos seguintes passos:
 
