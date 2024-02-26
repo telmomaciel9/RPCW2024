@@ -9,7 +9,7 @@ O tpc2 consiste nos seguintes passos:
 4) Criar repositório no graphdb com a ontologia
 _____
 
-###  Autor
+##  Autor
 Telmo Maciel - PG54246
 _____
 
