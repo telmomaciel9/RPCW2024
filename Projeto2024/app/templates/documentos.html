@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include 'layout.html' %}
+    <title>Documentos</title>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+    <style>
+        h1 {
+            padding: 5px;
+        }
+
+        body::after {
+            background: whitesmoke;
+        }
+        a {
+            color: inherit; /* Mantém a cor do texto padrão */
+            text-decoration: none; /* Remove a decoração sublinhada */
+        }
+
+        .dataTables_filter {
+            float: right;
+            margin-right: 20px;
+        }
+        .dataTables_length {
+            margin-left: 20px; /* Adjust this value to add space to the left */
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 10px; /* Optional: add some space between label and input */
+        }
+        .dataTables_info {
+            margin-left: 20px; /* Adjust this value to add space to the left */
+        }
+    </style>
+
+<script>
+    $(document).ready(function() {
+        $('#tabela_documentos').DataTable({
+            "lengthMenu": [ [10, 25, 50, 100], [10, 25, 50, 100] ],
+            "pageLength": 10,
+            "columnDefs": [
+                { "orderable": false, "targets": -1 }, // Desativa a ordenação na última coluna
+                { "searchable": false, "targets": -1 } // Desativa a pesquisa na última coluna
+            ],
+            "initComplete": function () {
+
+                // Adiciona um campo de pesquisa para cada coluna, exceto a última
+                this.api().columns().every(function (index) {
+                    if (index !== this.columns().count() - 1) { // Verifica se não é a última coluna
+                        var column = this;
+                        var header = $(column.header()).text().trim();
+                        var input = $('<input type="text" placeholder="Filtrar ' + header + '">')
+                            .appendTo($(column.header()).empty())
+                            .on('click', function (e) {
+                                e.stopPropagation(); // Impede a propagação do evento de clique para as colunas
+                            })
+                            .on('keyup change', function () {
+                                column.search($(this).val(), false, false, true).draw();
+                            });
+                    }
+                });
+
+            }
+        });
+
+        $('#numero_entradas').change(function() {
+            window.location.href = "/documentos/pag=1&entradas_por_pagina=" + $(this).val();
+        });
+    });
+</script>
+
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <h1>Documentos</h1>
+
+    <table id="tabela_documentos" class="display">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Emissor</th>
+                <th>Fonte</th>
+                <th>Data</th>
+                <th>Notas</th>
+                <th>Ações</th> <!-- Nova coluna para os botões -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in dados %}
+                <tr>
+                    <td><a href="/documentos/{{ item['id']['value'] }}">{{ item['id']['value'] }}</a></td>
+                    <td><a href="/documentos/tipo/{{ item['tipo']['value'] }}">{{ item['tipo']['value'] }}</a></td>
+                    <td>
+                        {% for emissor in item['emissores']['value'].split(', ') %}
+                            <a href="/emissor/{{ emissor }}">{{ emissor }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ item['fonte']['value'] }}</td>
+                    <td>{{ item['data']['value'] }}</td>
+                    <td>{{ item['notas']['value'] }}</td>
+                    <td>
+                        <form action="/documentos/edit/{{ item['id']['value'] }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Editar</button>
+                        </form>
+                        <form action="/documentos/delete/{{ item['id']['value'] }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
