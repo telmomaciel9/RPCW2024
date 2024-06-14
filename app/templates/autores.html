@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include 'layout.html' %}
+    <title>Autores</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Lista de Autores</h1>
+    <div class="container-Emissores">
+        <ul>
+            {% for emissor in emissores %}
+                <li><a class="lista" href="/emissor/{{ emissor }}">{{ emissor }}</a></li>
+            {% endfor %}
+        </ul>
+    <div>
+</body>
+</html>

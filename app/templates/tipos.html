@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include 'layout.html' %}
+    <title>Tipos</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Lista de tipos de documento</h1>
+    <div class="container-Emissores">
+    <ul>
+        {% for tipo in tipos %}
+            <li><a class="lista" href="/documentos/tipo/{{ tipo }}">{{ tipo }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+

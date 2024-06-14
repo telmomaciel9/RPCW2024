@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include 'layout.html' %}
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #555;
+        }
+
+        .container .button {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .container .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container">
+        <h1>Adicionar Novo Documento</h1>
+        <form action="/addDocumento" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="id">ID *</label>
+                <input type="text" name="id" id="id" class="form-input" required readonly value="{{ id }}">
+            </div>
+            <div class="form-group">
+                <label for="emissor">Emissor *</label>
+                <select name="emissor" id="emissor" class="form-input" required>
+                    <option value="" disabled selected>Selecione o Emissor</option>
+                    {% for emissor in emissores %}
+                    <option value="{{ emissor }}">{{ emissor }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo *</label>
+                <select name="tipo" id="tipo" class="form-input" required>
+                    <option value="" disabled selected>Selecione o Tipo</option>
+                    {% for tipo in tipos %}
+                    <option value="{{ tipo }}">{{ tipo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="data">Data *</label>
+                <input type="text" name="data" id="data" class="form-input" required readonly>
+            </div>
+            <div class="form-group">
+                <label for="notas">Notas *</label>
+                <input type="text" name="notas" id="notas" placeholder="Notas" required class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="fonte">Fonte (opcional)</label>
+                <input type="text" name="fonte" id="fonte" placeholder="Fonte" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="numero">Número (opcional)</label>
+                <input type="text" name="numero" id="numero" placeholder="Número" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="numeroDR">Número DR (opcional)</label>
+                <input type="text" name="numeroDR" id="numeroDR" placeholder="Número DR" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="series">Séries (opcional)</label>
+                <input type="text" name="series" id="series" placeholder="Séries" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="pdflink">Link do PDF (opcional)</label>
+                <input type="text" name="pdflink" id="pdflink" placeholder="Link do PDF" class="form-input">
+            </div>
+            <!-- <div class="form-group">
+                <label for="pdf">Arquivo PDF (opcional)</label>
+                <input type="file" name="pdf" id="pdf" accept=".pdf" class="form-input">
+            </div> -->
+            <button type="submit" class="button">Adicionar Documento</button>
+        </form>
+        <script>
+            // Obtenha o elemento de entrada de data pelo ID
+            var inputDate = document.getElementById('data');
+        
+            // Obtenha a data atual
+            var today = new Date();
+        
+            // Formate a data no formato AAAA-MM-DD
+            var formattedDate = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+        
+            // Defina o valor do campo de entrada de data
+            inputDate.value = formattedDate;
+        </script>
+    </div>
+</body>
+</html>

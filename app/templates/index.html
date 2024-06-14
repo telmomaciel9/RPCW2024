@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include 'layout.html' %}
+    <title>Diário da República - Página Inicial</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container">
+        <h1>Diário da República</h1>
+            <form action="/documentos/search" method="GET" class="search-box">
+                <input type="text" name="term" placeholder="Digite sua pesquisa aqui..." class="search-input">
+                <button type="submit" class="button-search">Pesquisar</button>
+            </form>
+        <div class="main-options">
+            <a href="/documentos" class="button">Ver Todos os Documentos</a>
+            <a href="/autores" class="button">Ver Autores</a>
+            <a href="/tipos" class="button">Ver Tipos de Documento</a>
+
+            <a href="/addDocumento" class="button">Adicionar novo documento</a>
+            <a href="/addEmissor" class="button">Adicionar novo emissor</a>
+        </div>
+    </div>
+</body>
+</html>
