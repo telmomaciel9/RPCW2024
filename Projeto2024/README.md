@@ -1,6 +1,6 @@
 # Relatório do projeto de RPCW
 
-### Autores
+## Autores
 
 * [Telmo Maciel PG54246](https://github.com/telmomaciel9)
 * [Ricardo Araújo PG54190](https://github.com/ricardoaraujoo)
@@ -8,14 +8,14 @@
 
 ---
 
-### Como correr a aplicação
+## Como correr a aplicação
 
-##### Requisitos:
+#### Requisitos:
 
 * Docker
 
 
-##### Iniciar os servidores:
+#### Iniciar os servidores:
 
 Para iniciar os servidores, tanto do graphdb como da nossa aplicação, basta ir à diretoria app/ e correr os comandos "docker-compose build" e "docker-compose up", por esta ordem. Após isso o graphdb fica disponível na porta 7200 e a nossa aplicação na porta 5001.
 
@@ -24,7 +24,7 @@ Os servidores ficam disponíveis nos seguintes links:
 * [App](http://localhost:5001)
 
 
-##### Colocar a ontologia no Graphdb:
+#### Colocar a ontologia no Graphdb:
 
 Após iniciar os servidores é necessário colocar a ontologia no graphdb para podermos começar a disfrutar da nossa aplicação. Para tal, primeiro temos de ir à secção Setup -> Repositories e criar um novo repositório GraphDB com o nome "DRepublica". De seguida, ir à secção Import e dar import da ontologia a utilizar que, dependendo do tamanho do ficheiro, poderá ser dado de várias formas, no nosso caso damos import da nossa ontologia através de um ficheiro zip. 
 
@@ -32,14 +32,14 @@ Após a conclusão deste processo, a nossa aplicação está pronta a funcionar.
 
 
 ---
-### Introdução
+## Introdução
 
 No âmbito da unidade curricular de Representação e Processamento de Conhecimento Web foi-nos pedido para desenvolver um projeto de forma a aprofundar todos os conhecimentos adquiridos ao longo do semestre. 
 
 O nosso projeto consiste na criação de uma aplicação web capaz de recolher e adicionar informação a uma ontologia previamente desenvolvida. Esta ontologia é composta por dados (documentos) do site do Diário da Republica que se encontram no seguinte [link](https://epl.di.uminho.pt/~jcr/AULAS/RPCW2024/projeto/).
 
 
-### Tarefas
+## Tarefas
 
 As tarefas propostas para o nosso trabalho prático consistem no seguinte:
 
@@ -47,7 +47,7 @@ As tarefas propostas para o nosso trabalho prático consistem no seguinte:
 2. Criação de uma App web que permita explorar e tirar partido da ontologia;
 3. Deverá ser possível aumentar a ontologia a partir da aplicação Web.
 
-### Análise do dataset fornecido
+## Análise do dataset fornecido
 
 Após uma primeira análise do dataset fornecido encontramos vários campos desnecessário e que podiam ser retirados e, após uma discussão entre o grupo, foi decidido retirar as chaves 'dre_key', 'in_force', 'conditional', 'processing', 'plain_text', 'pdf_error' e 'timestamp'.
 
@@ -66,11 +66,11 @@ O dataset final consistiu apenas nos seguintes campos:
 
 Para tal ser possível, foi criado o ficheiro 'tratarDataset.py' que normaliza o texto em unicode e remove as colunas que o grupo decidiu retirar. O dataset final foi guardado como "DREdataset_clean.json".
 
-### Ontologia desenvolvida
+## Ontologia desenvolvida
 
 Nesta secção iremos falar de tudo que diz respeito à criação da nossa ontologia.
 
-##### Estrutura da ontologia
+#### Estrutura da ontologia
 
 Tendo em conta o ficheiro json resultante do preprocessamento dos dados, decidimos criar duas classes, Documento e Emissor, e as relações entre ambos, éEmitidoPor e Emitiu. Como data properties adicionamos a data, fonte, nomeEmissor, notas, numero, numeroDR, pdflink, series e tipo, sendo todos no formato string excepto o series que é um inteiro.
 
@@ -88,20 +88,20 @@ Um documento é composto pelo seguinte:
 E o emissor é composto por nomeEmissor que representa o nome do mesmo.
 
 
-##### Povoamento da ontologia
+#### Povoamento da ontologia
 
 Para fazermos o povoamento de toda a ontologia tendo em conta o dataset que obtivemos, foi criado o ficheiro geraTTL.py que vai a cada documento presente no dataset e cria os atributos necessários para ser adicionado à ontologia. É aqui neste ficheiro que os dados são tratados de forma a não dar erros depois na importação, isto é, remoção de caracteres inválidos, remoção de espaços, quebras de linha, etc. O resulado será, então, guardado no ficheiro DR_output.ttl, que estará pronto a ser importado no graphdb.
 
 
-### Desenvolvimento da aplicação
+## Desenvolvimento da aplicação
 
 Nesta secção falaremos de todos os passos por detrás da criação da nossa aplicação web, envolvendo tanto o frontend como backend e as ferramentas/tecnologias utilizadas.
 
-##### Ferramentas/tecnologias utilizadas
+#### Ferramentas/tecnologias utilizadas
 
 Para o desenvolvimento do nosso servidor backend foi utilizada a framework Flask do Python. Como base de dados recorremos, então, ao GraphDB, que é uma base de dados que permite o armazenamento em formato de grafo.
 
-##### Backend
+#### Backend
 
 No desenvolvimento do backend foram criadas várias rotas que vão responder aos pedidos da nossa página e serão apresentadas já de seguida.
 
@@ -161,7 +161,7 @@ POST/documentos/delete/: Retorna uma página de confirmação para eliminação 
 POST/confirm_delete/: Elimina um documento da base de dados. Que recebe como parâmetros:
 * id: identificador do documento
 
-##### Frontend
+#### Frontend
 
 Nesta secção será referido todo o processo da construção do frontend e falar um pouco sobre a estrutura da nossa aplicação.
 
@@ -186,11 +186,11 @@ Ao correr a nossa app o utilizador vai ter as seguintes funcionalidades:
 8) Header da página: O header da página é composto pelo logo do Diário da República (sempre que o utilizador clica no mesmo é aberta a homepage) e opções de navegação como "Página inicial", "Documentos", "Autores" e "Tipos". Ao clicar em qualquer uma destas opções de navegação o website será redirecionado para a página em questão.
 
 
-##### Docker
+#### Docker
 
 Por fim, o grupo recorreu ao docker para armazenar as várias camadas da nossa aplicação e permitir uma melhor e mais rápida execução da parte de quem vai testar ou correr a nossa aplicação web. Este passo também foi importante para reduzir os erros/conflitos na máquina de quem for executar o nosso projeto.
 
-### Conclusão
+## Conclusão
 
 Este projeto foi importante para consolidar os conhecimentos adquiridos ao longo do semestre na unidade curricular de RPCW. Durante o desenvolvimento, enfrentamos desafios significativos, especialmente na criação da ontologia e no tratamento do dataset, mas conseguimos superá-los com a colaboração dos vários membros do grupo.
 
